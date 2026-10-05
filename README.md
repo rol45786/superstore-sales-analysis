@@ -1,10 +1,17 @@
 # 📊 Superstore Sales Analysis
 
-Análisis completo de ventas del dataset **Sample Superstore** (2014–2017), desde la limpieza hasta un dashboard interactivo desplegado en Streamlit.
+Análisis completo de ventas del dataset **Sample Superstore** (2014–2017), desde la limpieza y el análisis exploratorio hasta un dashboard interactivo desplegado en Streamlit.
+
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-2.0+-150458?logo=pandas)](https://pandas.pydata.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?logo=streamlit)](https://streamlit.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+---
 
 ## 🎯 Objetivo
 
-Identificar patrones de ventas, productos clave y segmentos de clientes para optimizar la estrategia comercial. El análisis responde a 5 preguntas de negocio:
+Identificar patrones de ventas, productos clave y segmentos de clientes para optimizar la estrategia comercial de un retailer estadounidense. El análisis responde a 5 preguntas de negocio:
 
 1. ¿Cómo evolucionan las ventas en el tiempo?
 2. ¿Qué categorías y productos generan más ingresos y profit?
@@ -12,27 +19,48 @@ Identificar patrones de ventas, productos clave y segmentos de clientes para opt
 4. ¿Los clientes vuelven a comprar?
 5. ¿Cuál es el impacto real de los descuentos?
 
+---
+
+## 🚀 Dashboard interactivo
+
+👉 **[Ver dashboard en vivo](https://superstore-sales-analysis.streamlit.app)**
+
+**Funcionalidades:**
+- Filtros dinámicos por año, región, categoría y segmento
+- 4 KPIs que se recalculan en tiempo real
+- Evolución mensual de ventas
+- Ventas por categoría (donut)
+- Top 10 sub-categorías por ventas
+- Profit y ventas por región
+- Análisis Profit vs Descuento
+- Tabla de sub-categorías con pérdidas
+
+---
+
 ## 📁 Estructura del proyecto
 ecommerce_sales/
-├── dashboard/ # App interactiva en Streamlit
-│ └── app.py
-├── data/ # Datos crudos y limpios
-│ ├── superstore.csv
-│ └── clean.csv
-├── notebooks/ # Análisis paso a paso
-│ ├── 01_cleaning.ipynb
-│ └── 02_eda.ipynb
-├── sql/ # Consultas SQL (opcional)
+├── dashboard/
+│ └── app.py # Aplicación interactiva en Streamlit
+├── data/
+│ ├── superstore.csv # Dataset original
+│ └── clean.csv # Dataset limpio y listo para análisis
+├── notebooks/
+│ ├── 01_cleaning.ipynb # Limpieza y transformación
+│ └── 02_eda.ipynb # Análisis exploratorio
 ├── requirements.txt
 └── README.md
 
 
+---
+
 ## 🧹 Limpieza de datos
 
-- 9.994 filas originales → 9.994 tras limpieza (sin nulos ni duplicados)
-- Fechas convertidas a `datetime`
+- **9.994 filas** originales, sin nulos ni duplicados tras la limpieza
+- Fechas (`Order Date`, `Ship Date`) convertidas a `datetime`
 - Columnas temporales creadas: `Year`, `Month`, `YearMonth`, `Quarter`, `DayOfWeek`
-- Cálculo de `ShipDays` (tiempo de envío)
+- Cálculo de `ShipDays` (días entre pedido y envío)
+
+---
 
 ## 🔍 Principales hallazgos
 
@@ -48,7 +76,7 @@ ecommerce_sales/
 | Office Supplies | $719K | **17.0%** |
 | Furniture | $742K | **2.5%** 🚨 |
 
-**Sub-categorías con pérdidas netas**:
+**Sub-categorías con pérdidas netas:**
 - Tables: **−$17.725**
 - Bookcases: **−$3.473**
 - Supplies: **−$1.189**
@@ -72,53 +100,47 @@ ecommerce_sales/
 | Champions | 58 | 7.3% | 15.6% | $49.0K |
 | Perdidos (bajo valor) | 238 | 30.0% | 19.0% | $46.8K |
 
-**Insight**: el segmento "En riesgo de alto valor" (13.5% de clientes) genera el 23.1% de las ventas y el mayor profit histórico. Reactivar a esos 107 clientes es la acción con mayor ROI.
+**Insight**: el segmento **"En riesgo de alto valor"** (13.5% de los clientes) genera el **23.1% de las ventas** y el mayor profit histórico. Reactivar a esos 107 clientes es la acción con mayor ROI del negocio.
 
 ### 5. Retención — el cliente fiel existe
 - Caída del **100% al 12.1%** entre el mes 0 y el mes 1
 - Estabilización en el **15–20%** durante años
-- Cohortes recientes (2016–2017) muestran mejor retención
+- Las cohortes recientes (2016–2017) muestran mejor retención
 
-## 🚀 Dashboard interactivo
+---
 
-[Ver dashboard en vivo →](https://superstore-sales-analysis.streamlit.app)
+## 🛠️ Tecnologías utilizadas
 
-**Funcionalidades**:
-- Filtros por año, región, categoría y segmento
-- 4 KPIs dinámicos
-- Evolución mensual, ventas por categoría, top productos
-- Análisis de profit vs descuento
-- Tabla de sub-categorías con pérdidas
+- **Python 3.11** — pandas, numpy
+- **Visualización** — matplotlib, seaborn, plotly
+- **Dashboard** — Streamlit
+- **Notebooks** — Jupyter
+- **Control de versiones** — Git + GitHub
+
+---
 
 ## ⚙️ Cómo ejecutarlo localmente
 
 ```bash
-git clone https://github.com/TU-USUARIO/superstore-sales-analysis.git
+# Clonar el repositorio
+git clone https://github.com/rol45786/superstore-sales-analysis.git
 cd superstore-sales-analysis
+
+# Instalar dependencias
 pip install -r requirements.txt
+
+# Lanzar el dashboard
 streamlit run dashboard/app.py
 
----
+📚 Fuente de los datos
+Sample Superstore — Kaggle
 
-## Resumen de cambios aplicados al `app.py`
+👤 Autor
+Rolando Tellez
 
-| Antes | Ahora |
-|---|---|
-| `use_container_width=True` | `width='stretch'` |
-| `use_container_width=False` | `width='content'` |
-| Pie sin etiquetas | Pie con `percent+label` dentro |
-| Legend fuera | Pie sin legend (más limpio) |
-| Sin márgenes | `margin=dict(...)` para compactar |
-| Sidebar colapsado | `initial_sidebar_state='expanded'` |
-| Sin footer | Footer con créditos y contexto |
+GitHub: @rol45786
 
----
+LinkedIn: linkedin.com/in/rolando-tellez-luna-6a22541a7
 
-## Próximos pasos
+Email: rolandoantoniotellezluna@gmail.com
 
-1. **Copia el `app.py` nuevo** en `dashboard/app.py` (sobreescribe el actual).
-2. **Guarda los otros archivos**: `requirements.txt`, `.gitignore`, `README.md`.
-3. **Detén Streamlit** con Ctrl + C en la terminal donde corre.
-4. **Vuelve a lanzarlo** para verificar que todo sigue funcionando:
-   ```powershell
-   streamlit run dashboard/app.py
