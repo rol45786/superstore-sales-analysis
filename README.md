@@ -23,7 +23,7 @@ Identificar patrones de ventas, productos clave y segmentos de clientes para opt
 
 ## 🚀 Dashboard interactivo
 
-👉 **[Ver dashboard en vivo](https://superstore-sales-analysis.streamlit.app)**
+👉 **[Ver dashboard en vivo](https://superstore-sales-analysisi.streamlit.app)**
 
 **Funcionalidades:**
 - Filtros dinámicos por año, región, categoría y segmento
