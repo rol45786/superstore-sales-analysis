@@ -141,6 +141,3 @@ Rolando Tellez
 GitHub: @rol45786
 
 LinkedIn: linkedin.com/in/rolando-tellez-luna-6a22541a7
-
-Email: rolandoantoniotellezluna@gmail.com
-
